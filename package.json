@@ -15,5 +15,8 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "textbelt": "0.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
