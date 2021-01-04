@@ -1,94 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body style="overflow-x:hidden;">
-  <div style="display:flex;max-width:90vw;margin:auto;border:2px solid pink;padding:12px;transform:translate(0%,50px);">
-    <div style="padding-left:15px;padding-right:15px;">
-      <h1 style="display:block;color:pink;">SMS Sender <small>v1.0.0</small></h1>
-      <div style="display:flex;width:80vw;">
-        <div style="flex: 0 0 50%;">
-          <input type="text" id="email"
-            style="margin-bottom:12px;padding:8px 12px;margin-right:12px;border:1px solid pink;border-radius:4px;"
-            placeholder="Sender Email">
-          <input type="text" id="sender"
-            style="margin-bottom:12px;padding:8px 12px;border:1px solid pink;border-radius:4px;"
-            placeholder="Sender Name">
-          <br />
-          <input type="text" id="title"
-            style="margin-bottom:12px;padding:8px 12px;margin-right:12px;border:1px solid pink;border-radius:4px;"
-            placeholder="Message Title">
-          <input type="text" id="message"
-            style="margin-bottom:12px;padding:8px 12px;border:1px solid pink;border-radius:4px;"
-            placeholder="Message Content">
-        </div>
-        <div style="align-self:flex-end;">
-          <button
-            style="background-color:white;border:1px solid pink;color:pink;padding:8px 12px;font-size:20px;border-radius:8px;margin-bottom:12px;"
-            id="send">Send</button>
-          <button
-            style="background-color:white;border:1px solid pink;color:pink;padding:8px 12px;font-size:20px;border-radius:8px;margin-bottom:12px;margin-left:12px;"
-            id="clear">Clear</button>
-        </div>
-      </div>
-      <textarea id="numbers" style="width:80vw;padding:8px 12px;border:1px solid pink;border-radius:4px;height:500px;"
-        placeholder="Target Numbers [separated by ',']..."></textarea>
-      <div style="color:pink;">By Irene</div>
-    </div>
+<h1 class="title layout-margin-bt">SMS Sender <small class="title-subtext layout-margin-lt">v1.0.0</small></h1>
+<div style="display:flex;width:80vw;flex-wrap:wrap;">
+  <div style="flex: 0 0 50%;">
+    <input type="text" id="email" class="input layout-margin-bt" placeholder="Sender Email">
+    <input type="text" id="sender" class="input layout-margin-bt layout-margin-lt" placeholder="Sender Name">
+    <br />
+    <input type="text" id="title" class="input layout-margin-bt" placeholder="Message Title">
+    <input type="text" id="message" class="input layout-margin-bt layout-margin-lt" placeholder="Message Content"
+      style="margin-right:4px;">
   </div>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-  <script>
-    window.onload = function () {
-      let info = {
-        numbers: '',
-        message: '',
-        title: '',
-        sender: '',
-        email: ''
-      }
-      document.querySelector('#clear').addEventListener('click', function (e) {
-        document.querySelector('#numbers').value = ''
-        info.numbers = ''
-        document.querySelector('#email').value = ''
-        info.email = ''
-        document.querySelector('#numbers').value = ''
-        info.numbers = ''
-        document.querySelector('#sender').value = ''
-        info.sender = ''
-        document.querySelector('#title').value = ''
-        info.title = ''
-        document.querySelector('#message').value = ''
-        info.message = ''
-      })
-      document.querySelector('#numbers').addEventListener('input', function (e) {
-        info.numbers = e.target.value.split(',')
-      })
-      document.querySelector('#email').addEventListener('input', function (e) {
-        info.email = e.target.value
-      })
-      document.querySelector('#sender').addEventListener('input', function (e) {
-        info.sender = e.target.value
-      })
-      document.querySelector('#title').addEventListener('input', function (e) {
-        info.title = e.target.value
-      })
-      document.querySelector('#message').addEventListener('input', function (e) {
-        info.message = e.target.value
-      })
-      document.querySelector('#send').addEventListener('click', function (e) {
-        const { numbers, message, title, sender, email } = info
-        const body = { numbers, message, title, sender, email }
-        axios.post('/sms', body).then(res => {
-          console.log(res.data)
-        })
-      })
-    }
-  </script>
-</body>
+  <div style="align-self:flex-end;" class="layout-margin-lt">
+    <button class="button layout-margin-bt" id="send">Send</button>
+    <button class="button layout-margin-bt layout-margin-lt" id="clear">Clear</button>
+  </div>
+</div>
+<textarea id="numbers" class="textarea" placeholder="Target Numbers [separated by ',']..."></textarea>
 
-</html>
+
+<script>
+  window.onload = function () {
+    let info = {
+      numbers: '',
+      message: '',
+      title: '',
+      sender: '',
+      email: ''
+    }
+    document.querySelector('#clear').addEventListener('click', function (e) {
+      document.querySelector('#numbers').value = ''
+      info.numbers = ''
+      document.querySelector('#email').value = ''
+      info.email = ''
+      document.querySelector('#numbers').value = ''
+      info.numbers = ''
+      document.querySelector('#sender').value = ''
+      info.sender = ''
+      document.querySelector('#title').value = ''
+      info.title = ''
+      document.querySelector('#message').value = ''
+      info.message = ''
+    })
+    document.querySelector('#numbers').addEventListener('input', function (e) {
+      info.numbers = e.target.value.split(',')
+    })
+    document.querySelector('#email').addEventListener('input', function (e) {
+      info.email = e.target.value
+    })
+    document.querySelector('#sender').addEventListener('input', function (e) {
+      info.sender = e.target.value
+    })
+    document.querySelector('#title').addEventListener('input', function (e) {
+      info.title = e.target.value
+    })
+    document.querySelector('#message').addEventListener('input', function (e) {
+      info.message = e.target.value
+    })
+    document.querySelector('#send').addEventListener('click', function (e) {
+      const { numbers, message, title, sender, email } = info
+      const body = { numbers, message, title, sender, email }
+      axios.post('/sms', body).then(res => {
+        console.log(res.data)
+      })
+    })
+  }
+</script>

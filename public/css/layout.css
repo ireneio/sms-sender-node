@@ -1,0 +1,40 @@
+body {
+  overflow-x: hidden;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.container {
+  display: flex;
+  max-width: 90vw;
+  margin: 0 auto;
+  border: 1px solid pink;
+  padding: 12px 15px;
+  transform: translate(0%, 50px);
+  -webkit-box-shadow: 8px 12px 30px -4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 8px 12px 30px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 8px 12px 30px -4px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col {
+  padding-left: -15px;
+  padding-right: -15px;
+}
+
+.footer {
+  color: pink;
+  margin-top: 4px;
+}

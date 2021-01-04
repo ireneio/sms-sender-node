@@ -1,0 +1,60 @@
+.button,
+.textarea,
+.input {
+  font-size: 16px;
+}
+
+.layout-margin-bt {
+  margin-bottom: 12px;
+}
+
+.layout-margin-lt {
+  margin-left: 4px;
+}
+
+@media only screen and (max-width: 1130px) {
+  .layout-margin-lt {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .textarea {
+    max-width: 221px;
+  }
+}
+
+.title {
+  display: block;
+  color: pink;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.title-subtext {
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.textarea {
+  width: calc(80vw - 30px);
+  padding: 8px 12px;
+  border: 1px solid pink;
+  border-radius: 4px;
+  height: 500px;
+}
+
+.input {
+  padding: 12px 12px;
+  border: 1px solid pink;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: white;
+  border: 1px solid pink;
+  color: pink;
+  padding: 8px 12px;
+  font-size: 20px;
+  border-radius: 8px;
+}
